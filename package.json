@@ -9,7 +9,10 @@
   "dependencies": {
     "express": "~4.9.x",
     "cool-ascii-faces": "~1.3.x",
-    "coffee-script":"*"
+    "coffee-script":"*",
+    "mongoose": "3.8.16",
+    "ect": "*",
+    "express.io": "*"
   },
   "engines": {
     "node": "0.10.x"
