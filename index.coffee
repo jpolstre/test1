@@ -10,7 +10,7 @@ app.http().io()
 cool = require('cool-ascii-faces')
 
 app.set 'port', process.env.PORT or 5000
-app.set 'views', "#{__dirname}/public/views"
+app.set 'views', "#{__dirname}/views"
 app.engine '.ect', ectRenderer.render
 # app.engine 'ect', consolidate.ect
 app.set 'view engine', 'ect'
