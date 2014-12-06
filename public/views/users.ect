@@ -8,14 +8,17 @@
 	<script type="text/javascript">
 		var io = io.connect();
 		$(window).on('load', function(){
+			var textoJq;
 			io.on('users:mesagge', function(data){
 				$('<hr><p>'+data.texto+'</p>').appendTo('body');
+				textoJq.val('')
 			});
 
 			$('form#myform').on('submit', function(event) {
 				event.preventDefault();
 				// $('<hr><p>'+$(this).find('input:text').val()+'</p>').appendTo('body');
-				io.emit('users:mesagge', {texto:$(this).find('input:text').val()});//emitir. al servidor, en vez de ajax.
+				textoJq = $(this).find('input:text')
+				io.emit('users:mesagge', {texto:textoJq.val()});//emitir. al servidor, en vez de ajax.
 			});
 
 		});
