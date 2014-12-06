@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>Users</title>
+</head>
+<body>
+	<h1>List My Users</h1>
+	<ul>
+		<% for usuario in @usuarios : %>
+			<li>Usuario: <%-usuario.name%></li>
+			<li>Email: <%-usuario.email%></li>
+		<% end %>
+	</ul>
+</body>
+</html>
