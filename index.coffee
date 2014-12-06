@@ -56,5 +56,11 @@ app.get '/users', (request, response)->
 		response.render 'users', {title:'Usuarios', usuarios:docs}
   	# response.json(docs)
 
+app.io.route 'users',
+	mesagge:(request, response)->
+		# request.data.texto
+		app.io.broadcast('users:mesagge', request.data)#enviar al cliente.
+		
+
 app.listen app.get('port'), ->
   console.log("Node app is running at localhost:" + app.get('port'))

@@ -3,6 +3,23 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Users</title>
+	<script src="/libs/jquery-1.10.2.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script type="text/javascript">
+		var io = io.connect();
+		$(window).on('load', function(){
+			io.on('users:mesagge', function(data){
+				$('<hr><p>'+data.texto+'</p>').appendTo('body');
+			});
+
+			$('form#myform').on('submit', function(event) {
+				event.preventDefault();
+				// $('<hr><p>'+$(this).find('input:text').val()+'</p>').appendTo('body');
+				io.emit('users:mesagge', {texto:$(this).find('input:text').val()});//emitir. al servidor, en vez de ajax.
+			});
+
+		});
+	</script>
 </head>
 <body>
 	<h1>List My Users</h1>
@@ -12,5 +29,10 @@
 			<li>Email: <%-usuario.email%></li>
 		<% end %>
 	</ul>
+	<hr>
+	<form id="myform">
+		<label for="inputid">Escribe Algo</label>
+		<input type="text" id="inputid">
+	</form>
 </body>
 </html>
